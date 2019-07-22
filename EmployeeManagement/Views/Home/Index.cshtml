@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<EmployeeManagement.Models.Employee>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+@{ 
+     ViewBag.title = "Employee Details";
+}
+
     <table>
         <thead>
             <tr>
@@ -30,5 +29,5 @@
             }
         </tbody>
     </table>
-</body>
-</html>
+
+

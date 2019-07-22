@@ -1,6 +1,7 @@
 ﻿@model EmployeeManagement.ViewModel.HomeDetailsViewModel
-
-
+ @{
+     ViewBag.title = "Employee Details";
+}
 <h3>@Model.PageTitle</h3>
 
 
@@ -22,3 +23,7 @@
     Dep: @Model.Employee.Department
 
 </div>
+
+@section Scripts  {
+    <script src="~/js/CustomScript.js"></script>
+}
