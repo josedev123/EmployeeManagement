@@ -9,7 +9,7 @@ namespace EmployeeManagement.Controllers
 {
     public class HomeController : Controller
     {
-        private IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
         public HomeController(IEmployeeRepository employeeRepository)
         {
@@ -18,6 +18,14 @@ namespace EmployeeManagement.Controllers
         public string Index()
         {
             return _employeeRepository.GetEmployee(1).Name;
+
+        }
+        public ViewResult Details(int id)
+        {
+            Employee model = _employeeRepository.GetEmployee(id);
+            ViewData["Employee"] = model;
+            ViewData["PageTitle"] = "Employee Details";
+            return View();
 
         }
     }
