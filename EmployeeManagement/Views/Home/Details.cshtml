@@ -1,26 +1,24 @@
-﻿
-@{
-    ViewData["Title"] = "Details";
-}
+﻿@model EmployeeManagement.ViewModel.HomeDetailsViewModel
 
-<h3>@ViewBag.PageTitle</h3>
+
+<h3>@Model.PageTitle</h3>
 
 
 
 <div>
 
-    Name: @ViewBag.Employee.Name
+    Name: @Model.Employee.Name
 
 </div>
 
 <div>
 
-    Email: @ViewBag.Employee.Email
+    Email: @Model.Employee.Email
 
 </div>
 
 <div>
 
-    Dep: @ViewBag.Employee.Department
+    Dep: @Model.Employee.Department
 
 </div>
