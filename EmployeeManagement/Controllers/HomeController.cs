@@ -16,6 +16,7 @@ namespace EmployeeManagement.Controllers
         {
             _employeeRepository = employeeRepository;
         }
+
         public ViewResult Index()
         {
             var model = _employeeRepository.GetEmployees();
