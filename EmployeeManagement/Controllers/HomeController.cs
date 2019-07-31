@@ -31,9 +31,17 @@ namespace EmployeeManagement.Controllers
         }
         public ViewResult Details(int id)
         {
+            Employee employee = _employeeRepository.GetEmployee(id);
+
+            if (employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound", id);
+            }
+
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _employeeRepository.GetEmployee(id),
+                Employee = employee,
                 PageTitle = "Employee Details"
 
             };
@@ -97,7 +105,8 @@ namespace EmployeeManagement.Controllers
             {
 
                 string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                var filenameonly = Path.GetFileName(model.Photo.FileName);  //Fix: Internet Explorer were returning the whole file path including drive letter
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + filenameonly;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 using(var fileStream = new FileStream(filePath, FileMode.Create))
                 {
